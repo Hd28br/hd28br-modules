@@ -1,10 +1,10 @@
 # My Javascript Modules
 
-My Modules, You can use this anywhere if you want :fa-thumbs-o-up:
+My Modules, You can use this anywhere if you want :thumbsup:
 
 ## [:floppy_disk: Internet.js](Internet.js "Internet")
 
-:warning: This only suppors get and post requests!
+:warning: This only supports get and post requests!
 
 ### Imporing
 
@@ -21,11 +21,11 @@ or
 ### How many pepole are in space?
 
 ```javascript
-var R = Internet.Requests;
-R.UseProxy = true;
-R.Proxy = Internet.Proxies.CORSAnywhere;
+var Web = Internet.Requests;
+Web.UseProxy = true;
+Web.Proxy = Internet.Proxies.CORSAnywhere;
 
-R.GET("http://api.open-notify.org/astros.json").then(function (a) {
+Web.GET("http://api.open-notify.org/astros.json").then(function (a) {
 	let J = JSON.parse(a.responseText);
 	alert("There are " + J["number"] + " pepole in space.");
 });
@@ -34,14 +34,26 @@ R.GET("http://api.open-notify.org/astros.json").then(function (a) {
 ### A proxy inside a proxy!
 
 ```javascript
-var R = Internet.Requests;
-R.UseProxy = true;
-R.Proxy = Internet.Proxies.JoinProxies;
+var Web = Internet.Requests;
+Web.UseProxy = true;
+Web.Proxy = Internet.Proxies.JoinProxies;
 
-R.Proxy.ProxyA = Internet.Proxies.CORSAnywhere;
-R.Proxy.ProxyB = Internet.Proxies.allOrigins;
+Web.Proxy.ProxyA = Internet.Proxies.CORSAnywhere;
+Web.Proxy.ProxyB = Internet.Proxies.allOrigins;
 
-R.GET("https://example.com").then(function (a) {
+Web.GET("https://example.com").then(function (a) {
 	alert("A proxy inside a proxy!");
+});
+```
+
+### Can't import a module, Because of CORB ? use Internet.js.
+
+```javascript
+var Web = Internet.Requests;
+Web.UseProxy = true;
+Web.Proxy = Internet.Proxies.CORSAnywhere;
+
+Web.GET("https://modulewebsite.com/module.js").then(function (a) {
+	exec(a.responseText);
 });
 ```
