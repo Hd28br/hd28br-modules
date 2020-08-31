@@ -1,4 +1,9 @@
-var Internet = {}
+var Internet = {
+    "Requests": {},
+    "Proxies": {}
+}
+
+Internet.Requests = {}
 
 // Requests
 
@@ -61,6 +66,8 @@ Internet.Requests.Request = function (r) {
 
 // CORSAnywhere
 
+Internet.Proxies.CORSAnywhere = {}
+
 Internet.Proxies.CORSAnywhere.GET = function (URL) {
     return "https://cors-anywhere.herokuapp.com" + encodeURI(URL);
 }
@@ -70,6 +77,8 @@ Internet.Proxies.CORSAnywhere.POST = function (URL,data) {
 }
 
 // JoinProxies
+
+Internet.Proxies.JoinProxies = {}
 
 Internet.Proxies.JoinProxies.ProxyA = {}
 Internet.Proxies.JoinProxies.ProxyB = {}
@@ -83,6 +92,8 @@ Internet.Proxies.JoinProxies.GET = function (URL) {
 }
 
 // CORSProxyHTMLDRIVEN
+
+Internet.Proxies.CORSProxyHTMLDRIVEN = {}
 
 Internet.Proxies.CORSProxyHTMLDRIVEN.GET = function (URL) {
     return "https://cors-proxy.htmldriven.com/?url=" + encodeURI(URL);
