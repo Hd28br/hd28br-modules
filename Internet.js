@@ -3,12 +3,12 @@ var Internet = {
     "Proxies": {}
 }
 
-Internet.Requests = {}
+Internet.Requests = {};
 
 // Requests
 
-Internet.Requests.Proxy = {}
-Internet.Requests.UseProxy = {}
+Internet.Requests.Proxy = {};
+Internet.Requests.UseProxy = false;
 
 Internet.Requests.GET = function (URL) {
     let GThis = this;
