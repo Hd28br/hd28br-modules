@@ -69,11 +69,11 @@ Internet.Requests.Request = function (r) {
 Internet.Proxies.CORSAnywhere = {}
 
 Internet.Proxies.CORSAnywhere.GET = function (URL) {
-    return "https://cors-anywhere.herokuapp.com" + encodeURI(URL);
+    return "https://cors-anywhere.herokuapp.com/" + encodeURI(URL);
 }
 
 Internet.Proxies.CORSAnywhere.POST = function (URL,data) {
-    return "https://cors-anywhere.herokuapp.com" + encodeURI(URL);
+    return "https://cors-anywhere.herokuapp.com/" + encodeURI(URL);
 }
 
 // JoinProxies
