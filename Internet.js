@@ -11,6 +11,7 @@ Internet.Requests.Proxy = {}
 Internet.Requests.UseProxy = {}
 
 Internet.Requests.GET = function (URL,me) {
+    let GThis = this;
     return new Promise (function (resolve,reject) {
         let XMLHttp = new XMLHttpRequest();
         XMLHttp.onreadystatechange = function () {
@@ -19,8 +20,8 @@ Internet.Requests.GET = function (URL,me) {
             }
         }
         
-        if (me.UseProxy) {
-            XMLHttp.open("GET",me.Proxy.GET(URL),true);
+        if (GThis.UseProxy) {
+            XMLHttp.open("GET",GThis.Proxy.GET(URL),true);
         } else {
             XMLHttp.open("GET",URL,true);
         }
@@ -29,7 +30,8 @@ Internet.Requests.GET = function (URL,me) {
     });
 };
 
-Internet.Requests.POST = function (URL,data,me) {
+Internet.Requests.POST = function (URL,data) {
+    let GThis = this;
     return new Promise (function (resolve,reject) {
         let XMLHttp = new XMLHttpRequest();
         XMLHttp.onreadystatechange = function () {
@@ -38,8 +40,8 @@ Internet.Requests.POST = function (URL,data,me) {
             }
         }
         
-        if (me.UseProxy) {
-            XMLHttp.open("POST",me.Proxy.POST(URL,data),true);
+        if (GThis.UseProxy) {
+            XMLHttp.open("POST",GThis.Proxy.POST(URL,data),true);
         } else {
             XMLHttp.open("POST",URL,true);
         }
@@ -50,14 +52,13 @@ Internet.Requests.POST = function (URL,data,me) {
 
 Internet.Requests.Request = function (r) {
     let Cut = r.split(" ");
-    let UseProxy = Cut.pop();
 
     if (Cut[0] == "GET") {
-        return this.GET(Cut[1],this);
+        return this.GET(Cut[1]);
     }
  
     if (Cut[0] == "POST") {
-        return this.POST(Cut[1],Cut[2],this);
+        return this.POST(Cut[1],Cut[2]);
     }
 }
 
