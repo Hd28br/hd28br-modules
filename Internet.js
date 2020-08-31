@@ -1,6 +1,6 @@
 var Internet = {
     "Requests": {},
-    "Proxy": {}
+    "Proxies": {}
 }
 
 // Requests
