@@ -92,14 +92,14 @@ Internet.Proxies.JoinProxies.GET = function (URL) {
     return this.ProxyA.GET(this.ProxyB.GET(URL));
 }
 
-// CORSProxyHTMLDRIVEN
+// allOrigins
 
-Internet.Proxies.CORSProxyHTMLDRIVEN = {}
+Internet.Proxies.allOrigins = {}
 
-Internet.Proxies.CORSProxyHTMLDRIVEN.GET = function (URL) {
-    return "https://cors-proxy.htmldriven.com/?url=" + encodeURI(URL);
+Internet.Proxies.allOrigins.GET = function (URL) {
+    return "https://api.allorigins.win/raw?url=" + encodeURI(URL);
 }
 
-Internet.Proxies.CORSProxyHTMLDRIVEN.POST = function (URL,data) {
-    return "https://cors-proxy.htmldriven.com/?url=" + encodeURI(URL);
+Internet.Proxies.allOrigins.POST = function (URL,data) {
+    return "https://api.allorigins.win/raw?url=" + encodeURI(URL);
 }
