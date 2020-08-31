@@ -6,7 +6,7 @@ My Modules, You can use this anywhere if you want :thumbsup:
 
 :warning: This only supports get and post requests!
 
-### Imporing
+### Importing
 
 ```html
 <script src="https://hd28br.github.io/hd28br-modules/Internet-min.js"></script>
