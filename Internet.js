@@ -10,26 +10,7 @@ Internet.Requests = {}
 Internet.Requests.Proxy = {}
 Internet.Requests.UseProxy = {}
 
-Internet.Requests.GET = function (URL) {
-    return new Promise (function (resolve,reject) {
-        let XMLHttp = new XMLHttpRequest();
-        XMLHttp.onreadystatechange = function () {
-            if (this.readyState == 4) {
-                resolve(this);
-            }
-        }
-
-        if (this.UseProxy) {
-            XMLHttp.open("GET",this.Proxy.GET(URL),true);
-        } else {
-            XMLHttp.open("GET",URL,true);
-        }
-
-        XMLHttp.send();
-    });
-};
-
-Internet.Requests.POST = function (URL,data) {
+Internet.Requests.GET = function (URL,me) {
     return new Promise (function (resolve,reject) {
         let XMLHttp = new XMLHttpRequest();
         XMLHttp.onreadystatechange = function () {
@@ -38,8 +19,27 @@ Internet.Requests.POST = function (URL,data) {
             }
         }
         
-        if (this.UseProxy) {
-            XMLHttp.open("POST",this.Proxy.POST(URL,data),true);
+        if (me.UseProxy) {
+            XMLHttp.open("GET",me.Proxy.GET(URL),true);
+        } else {
+            XMLHttp.open("GET",URL,true);
+        }
+
+        XMLHttp.send();
+    });
+};
+
+Internet.Requests.POST = function (URL,data,me) {
+    return new Promise (function (resolve,reject) {
+        let XMLHttp = new XMLHttpRequest();
+        XMLHttp.onreadystatechange = function () {
+            if (this.readyState == 4) {
+                resolve(this);
+            }
+        }
+        
+        if (me.UseProxy) {
+            XMLHttp.open("POST",me.Proxy.POST(URL,data),true);
         } else {
             XMLHttp.open("POST",URL,true);
         }
@@ -53,11 +53,11 @@ Internet.Requests.Request = function (r) {
     let UseProxy = Cut.pop();
 
     if (Cut[0] == "GET") {
-        return this.GET(Cut[1]);
+        return this.GET(Cut[1],this);
     }
  
     if (Cut[0] == "POST") {
-        return this.POST(Cut[1],Cut[2]);
+        return this.POST(Cut[1],Cut[2],this);
     }
 }
 
