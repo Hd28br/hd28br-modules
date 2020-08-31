@@ -85,11 +85,11 @@ Internet.Proxies.JoinProxies.ProxyA = {}
 Internet.Proxies.JoinProxies.ProxyB = {}
 
 Internet.Proxies.JoinProxies.POST = function (URL,data) {
-    return ProxyA.POST(ProxyB.POST(URL,data),data)
+    return this.ProxyA.POST(this.ProxyB.POST(URL,data),data)
 }
 
 Internet.Proxies.JoinProxies.GET = function (URL) {
-    return ProxyA.GET(ProxyB.GET(URL));
+    return this.ProxyA.GET(this.ProxyB.GET(URL));
 }
 
 // CORSProxyHTMLDRIVEN
