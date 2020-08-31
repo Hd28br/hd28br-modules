@@ -10,7 +10,7 @@ Internet.Requests = {}
 Internet.Requests.Proxy = {}
 Internet.Requests.UseProxy = {}
 
-Internet.Requests.GET = function (URL,me) {
+Internet.Requests.GET = function (URL) {
     let GThis = this;
     return new Promise (function (resolve,reject) {
         let XMLHttp = new XMLHttpRequest();
