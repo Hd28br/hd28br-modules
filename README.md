@@ -46,7 +46,7 @@ Web.GET("https://example.com").then(function (a) {
 });
 ```
 
-### Can't import a module, Because of CORB ? use Internet.js.
+### Can't import a module because of CORB? Use Internet.js.
 
 ```javascript
 var Web = Internet.Requests;
