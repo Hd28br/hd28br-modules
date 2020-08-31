@@ -1,7 +1,4 @@
-var Internet = {
-    "Requests": {},
-    "Proxies": {}
-}
+var Internet = {}
 
 // Requests
 
