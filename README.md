@@ -48,29 +48,17 @@ Web.GET("http://api.open-notify.org/astros.json").then(function (a) {
 
 ### A proxy inside a proxy!
 
-```javascriptwhile (!Internet) {
-  // Wait
-}
-
+```javascript
 var Web = Internet.Requests;
 Web.UseProxy = true;
-Web.Proxy = Internet.Proxies.CORSAnywhere;
+Web.Proxy = Internet.Proxies.JoinProxies;
 
-Web.GET("http://api.open-notify.org/astros.json").then(function (a) {
-	let Response = JSON.parse(a.responseText);
-  let Result = ""
+Web.Proxy.ProxyA = Internet.Proxies.CORSAnywhere;
+Web.Proxy.ProxyB = Internet.Proxies.allOrigins;
 
-  if (Response["message"] === "success") {
-	  Result += ("There are " + Response["number"] + " pepole in space.");
-    Response["people"].forEach((item) => {
-      Result += "\n";
-      Result += item["name"] + " Is on the " + item["craft"];
-    });
-  } else {
-    Result = "Error!!!, " + a.responseText
-  }
-  console.log(Result);
-});
+
+Web.GET("https://example.com").then(function (a) {
+	alert("A proxy inside a proxy!");
 });
 ```
 
