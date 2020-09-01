@@ -21,7 +21,29 @@ or
 ### How many pepole are in space?
 
 ```javascript
+while (!Internet) {
+  // ...
+}
 
+var Web = Internet.Requests;
+Web.UseProxy = true;
+Web.Proxy = Internet.Proxies.CORSAnywhere;
+
+Web.GET("http://api.open-notify.org/astros.json").then(function (a) {
+	let Response = JSON.parse(a.responseText);
+  let Result = ""
+
+  if (Response["message"] === "success") {
+	  Result += ("There are " + Response["number"] + " pepole in space.");
+    Response["people"].forEach((item) => {
+      Result += "\n";
+      Result += item["name"] + " Is on the " + item["craft"];
+    });
+  } else {
+    Result = "Error!!!, " + a.responseText
+  }
+  console.log(Result);
+});
 ```
 
 ### A proxy inside a proxy!
